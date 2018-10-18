@@ -17,13 +17,99 @@
             color: black;
             height: 70px;
             background-color: white;
-            text-align: left;
-            font-weight: bold;
-            font-size: 30px;
-            padding-top: 20px;
-            padding-left: 20px;
             font-family: 'Montserrat', sans-serif;
         }
+        #logo{
+            float: left;
+            padding-top: 20px;
+            padding-left: 20px;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li{
+            float: left;
+        }
+
+        li:last-child{
+            border-right: none;
+        }
+        
+        li a{
+            display: block;                                         
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        li a:hover{
+            border-bottom: 1px solid black;
+        }
+        ol{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+        }
+        ol>li{
+            float: left;
+
+        }
+
+        ol a{
+            display: block;
+            text-decoration: none;
+            padding: 0 5px;
+        }
+
+        ol > li > a:hover{
+            color: pink;
+        }
+
+        ol > li:hover{
+            background-color: red;
+        }
+
+        ol > li > ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        ol > li{
+            float: left;
+            background: yellow;
+            margin-left: 1px;
+        }
+
+        ol > li:first-child{
+            margin-left: 0;
+        }
+        
+        ol > li > ul > li > a{
+            border-top: 1px solid green;
+        }
+
+        ol > li > ul{
+            display: none;
+        }
+
+        ol > li:hover > ul{
+            display: block;
+        }
+
+        #menu{
+            float: right;
+            padding-top: 20px;
+            font-size: 20px;
+        }
+
         #map { 
             position:absolute; 
             top: 70px;
@@ -38,15 +124,42 @@
             border-radius: 50%;
             cursor: pointer;
         }
-        .mapboxgl-popup {
-            max-width: 400px;
-            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        .mapboxgl-popup-content {
+            min-width: 100px;
+            max-width: 250px;
+            min-height: 100px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
         } 
 
     </style>
 </head>
 <body>
-    <div id="nav-bar">M U S E A</div>
+    <div id="nav-bar">
+        <div id="logo">
+            M U S E A
+        </div>
+        <div id="menu">
+        <ul>
+            <ol>
+                <li><a href="#">Miasta</a></li>
+                <ul>
+                    <li>W A R S Z A W A</li>
+                    <li>Katowice</li>
+                    <li>Kraków</li>
+                    <li>Bydgoszcz</li>
+                    <li>Wrocław</li>
+                    <li>Szczecin</li>
+                    <li>Gdańsk</li>
+                    <li>Łódź</li>
+                    <li>Lublin</li>
+                </ul>
+            </ol> 
+            <li><a href="" target="blank">O &nbsp; N A S</a></li>
+            <li><a href="" target="blank">O &nbsp;  P R O J E K C I E</a></li> 
+        </ul>
+        </div>
+    </div>
     <div id='map' style='width: 100%; height: 100vh;'></div>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1Ijoic2lyZWtwaW90ciIsImEiOiJjajk4cXNiM24wZDg0MnFsZ3B1cHczc3RvIn0.15mNfH6Yh7tbIBUjgXEtoQ';
@@ -83,7 +196,7 @@
                 type: "geojson",
                 data: {
                     type: "FeatureCollection",
-                    features:[{"interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0367796","52.2334363"]}},
+                    features:[{"properties":{"description": "Muzeum Azji i Pacyfiku w Warszawie<br><br>Muzeum założone w 1973 roku w Warszawie. Jest jedynym w Polsce posiadającym wyłącznie zbiory poświęcone kulturom krajów Azji, Oceanii oraz Australii."}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0367796","52.2334363"]}},
                     {"interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0258878","52.2321681"]}},//muzeum wojska polskiego w Warszawie
                     {"interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0247987","52.2315987"]}}, //muzeum narodowe w Warszawie
                     ]}
@@ -92,6 +205,23 @@
                 "icon-image": "custom-marker",
                 }
             });
+            });
+
+             map.on('click', 'markers', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var description = e.features[0].properties.description;
+
+                // Ensure that if the map is zoomed out such that multiple
+                // copies of the feature are visible, the popup appears
+                // over the copy being pointed to.
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
             });
 
             map.on('mouseenter', 'markers', function () {
@@ -107,3 +237,4 @@
     </script>
 </body>
 </html>
+
