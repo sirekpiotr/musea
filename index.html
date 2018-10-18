@@ -11,7 +11,7 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body {
-            margin:0; padding:0; 
+            margin:0; padding:0;
         }
         #nav-bar {
             color: black;
@@ -39,9 +39,9 @@
         li:last-child{
             border-right: none;
         }
-        
+
         li a{
-            display: block;                                         
+            display: block;
             text-align: center;
             padding: 8px 10px;
             text-decoration: none;
@@ -89,7 +89,7 @@
         ol > li:first-child{
             margin-left: 0;
         }
-        
+
         ol > li > ul > li > a{
             width: 120px;
             background-color:white;
@@ -110,12 +110,12 @@
             font-size: 20px;
         }
 
-        #map { 
-            position:absolute; 
+        #map {
+            position:absolute;
             top: 70px;
-            bottom:0; 
+            bottom:0;
             width:90%;
-            z-index: -1; 
+            z-index: -1;
         }
         .marker {
             background-image: url('mapbox-icon.png');
@@ -131,7 +131,7 @@
             min-height: 100px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
-        } 
+        }
 
     </style>
 </head>
@@ -157,7 +157,7 @@
             </ol>
             <ul>
                 <li><a href="" target="blank">O &nbsp; N A S</a></li>
-                <li><a href="" target="blank">O &nbsp;  P R O J E K C I E</a></li> 
+                <li><a href="" target="blank">O &nbsp;  P R O J E K C I E</a></li>
             </ul>
         </div>
     </div>
@@ -186,7 +186,7 @@
         }));*/
 
         map.on("load", function () {
-        
+
         map.loadImage("./ikona-muzeum.png", function(error, image) { //https://i.imgur.com/MK4NUzI.png
             if (error) throw error;
             map.addImage("custom-marker", image);
@@ -197,56 +197,17 @@
                 type: "geojson",
                 data: {
                     type: "FeatureCollection",
-                    features:[{"properties":{"description": "Muzeum Azji i Pacyfiku w Warszawie<br><br>Muzeum założone w 1973 roku w Warszawie. Jest jedynym w Polsce posiadającym wyłącznie zbiory poświęcone kulturom krajów Azji, Oceanii oraz Australii."}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0367796","52.2334363"]}},
-                    {"properties":{"description": "Muzeum Historii Polskiego Ruchu Ludowego w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0407","52.231"]}},
-                    {"properties":{"description": "Muzeum Karykatury im. Eryka Lipinskiego w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0132","52.245"]}},
-                    {"properties":{"description": "Muzeum Niepodleglosci w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0043","52.2454"]}},
-                    {"properties":{"description": "Muzeum Powstania Warszawskiego"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["20.981","52.2328"]}},
-                    {"properties":{"description": "Muzeum Sportu i Turystyki w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Warszawy"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Panstwowe Muzeum Archeologiczne w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0009","52.2458"]}},
-                    {"properties":{"description": "Panstwowe Muzeum Etnograficzne w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0122","52.2381"]}},
-                    {"properties":{"description": "Muzeum Historii zydow Polskich"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["20.9932","52.2493"]}},
-                    {"properties":{"description": "Muzeum Jana Pawla II i Prymasa Wyszynskiego"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Literatury im. Adama Mickiewicza w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Sztuki Nowoczesnej w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.002","52.2328"]}},
-                    {"properties":{"description": "Muzeum Historii Polski w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum lazienki Krolewskie w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum lowiectwa i Jezdziectwa w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0391","52.2135"]}},
-                    {"properties":{"description": "Muzeum Narodowe w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Palacu Krola Jana III w Wilanowie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Wojska Polskiego w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Zamek Krolewski w Warszawie–Muzeum. Rezydencja Krolowi Rzeczypospolitej"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0148","52.2479"]}},
-                    {"properties":{"description": "Muzeum Warszawskiej Metropolii Prawoslawnej w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Bohaterow Wrzesnia 1939 im. Jerzego Waszkiewicza (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["20.9992","52.2374"]}},
-                    {"properties":{"description": "Muzeum Bronii Wyposazenia Piechoty w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0358","52.143"]}},
-                    {"properties":{"description": "Muzeum Bursztynu w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Frontu Wschodniego(w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0165","52.2658"]}},
-                    {"properties":{"description": "Muzeum im. mjr. Wladyslawa Nowakowskiego ,,zubra”"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["20.9441","52.2479"]}},
-                    {"properties":{"description": "Muzeum Jednostek Specjalnych i Wojsk Powietrzno-Desantowych (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.1585","52.2096"]}},
-                    {"properties":{"description": "Muzeum Konfliktow Zbrojnych w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0212","52.1752"]}},
-                    {"properties":{"description": "Muzeum Kultury Romow w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0515","52.2306"]}},
-                    {"properties":{"description": "Muzeum Motoryzacji i Techniki ,,SKARB NARODU w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["20.9583","52.2002"]}},
-                    {"properties":{"description": "Muzeum Strategii i Taktyki Dzialan Zbrojnych CLAUSEWITZ (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0785","52.1618"]}},
-                    {"properties":{"description": "Muzeum swiatowego Oreza i Wojskowosci (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0223","52.1213"]}},
-                    {"properties":{"description": "Muzeum Techniki Wojskowej ,,ARMA w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.013","52.1107"]}},
-                    {"properties":{"description": "Muzeum Uzbrojenia zolnierza Wojska Polskiego 1914-1945 (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Willa Lodusienka w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.2024","52.182"]}},
-                    {"properties":{"description": "Muzeum Wojskowosci i Uzbrojenia (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0682","52.162"]}},
-                    {"properties":{"description": "Muzeum Zabytkow Techniki Wojskowej w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["20.9334","52.3545"]}},
-                    {"properties":{"description": "Prywatne Multimedialne Muzeum Gry i Zabawy w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0237","52.2129"]}},
-                    {"properties":{"description": "Prywatne Muzeum Kowalstwa w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Mobilne Muzeum Lotnictwa i Techniki w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["20.9935","52.2185"]}},
-                    {"properties":{"description": "Muzeum Akademi i Sztuk Pieknych w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Gazownictwa w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Harcerstwa w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0261","52.228"]}},
-                    {"properties":{"description": "Muzeum Historii Medycyny Warszawskiego Uniwersytetu Medycznego (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum Kolekcji im. Jana Pawla II Fundacji Carroll-Porczynskich w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0028","52.2418"]}},
-                    {"properties":{"description": "Muzeum Komunikacji w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0248","52.2746"]}},
-                    {"properties":{"description": "Muzeum Marii Sklodowskiej-Curie Polskiego Towarzystwa Chemicznego"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0086","52.2515"]}},
-                    {"properties":{"description": "Muzeum Technikii Przemyslu NOT w Warszawie"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0058","52.2318"]}},
-                    {"properties":{"description": "Muzeum Techniki Militarnej w Warszawie (w organizacji)"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["-100.446","39.7837"]}},
-                    {"properties":{"description": "Muzeum zolnierzy Wykletych i Wiezniow Politycznych PRL"}, "interactive": true,"type":"Feature","geometry":{"type":"Point","coordinates":["21.0094","52.2076"]}}
+                    features:[{
+                      <?php
+                      $connection = mysqli_connect('localhost', 'root', '');
+                      mysqli_select_db($connection, 'muzea');
+                      $zapytanie = "SELECT CONCAT("{'properties':{'description': '",Nazwa_Muzeum,"'}, 'interactive': true,'type':'Feature','geometry':{'type':'Point','coordinates':['",x,"','",y,"']}},") FROM `mytable` WHERE Miejscowosc='Warszawa';
+                      $q = mysqli_query($connection,$zapytanie);
+                      while($row = mysqli_fetch_assoc($q))
+                      {
+                          echo $row;
+                      }
+                      ?>
                     ]}
                 },
                 layout: {
@@ -259,9 +220,6 @@
                 var coordinates = e.features[0].geometry.coordinates.slice();
                 var description = e.features[0].properties.description;
 
-                // Ensure that if the map is zoomed out such that multiple
-                // copies of the feature are visible, the popup appears
-                // over the copy being pointed to.
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
@@ -287,8 +245,7 @@
 </html>
 
 <!--przepis na suckes
-    
+
     SELECT CONCAT("{'properties':{'description': '",Nazwa_Muzeum,"'}, 'interactive': true,'type':'Feature','geometry':{'type':'Point','coordinates':['",x,"','",y,"']}},") FROM `mytable` WHERE Miejscowosc='Warszawa';
 
 -->
-
