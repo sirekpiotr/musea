@@ -1,0 +1,121 @@
+        body {
+            margin:0; padding:0; 
+        }
+        #nav-bar {
+            color: black;
+            height: 70x;
+            background-color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #logo{
+            float: left;
+            padding-top: 20px;
+            padding-left: 20px;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            float: left;
+        }
+
+        li:last-child{
+            border-right: none;
+        }
+        
+        li a{
+            display: block;                                         
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        li a:hover{
+            border-bottom: 1px solid black;
+            font-weight: 600;
+        }
+        ol{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            height: 2em;
+            font-size: 20px;
+            line-height: 2em;
+            font-size: 20px;
+            float: right;
+        }
+        ol > li{
+            float: left;
+            width: 120px;
+        }
+
+        ol a{
+            display: block;
+            text-decoration: none;
+            padding: 0 5px;
+        }
+
+        ol > li > ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        ol > li{
+            float: left;
+        }
+
+        ol > li:first-child{
+            margin-left: 0;
+        }
+        
+        ol > li > ul > li > a{
+            width: 120px;
+            background-color: #D7D7D7;
+        }
+
+        ol > li > ul{
+            display: none;
+        }
+
+        ol > li:hover > ul{
+            display: block;
+        }
+
+        #menu{
+            float: right;
+            width: 452px;
+            padding-top: 20px;
+            font-size: 20px;
+        }
+
+        #map { 
+            position:absolute; 
+            top: 70px;
+            bottom:0; 
+            width:90%;
+            z-index: -1; 
+        }
+        .marker {
+            background-image: url('mapbox-icon.png');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .mapboxgl-popup-content {
+            min-width: 100px;
+            max-width: 250px;
+            min-height: 100px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+        } 
+        .mapboxgl-popup-close-button {
+            display: none;
+        }
