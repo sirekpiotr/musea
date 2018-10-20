@@ -130,13 +130,54 @@
 
         });
 
-        var navigation = document
-        function Remove(){
-            map.removeControl('top-left');
+        var directions = new MapboxDirections({
+            accessToken: mapboxgl.accessToken,
+            unit: 'metric',
+            profile: 'mapbox/walking' // Chodzenie to dobra sprawa :)
+        });
+
+        class NavigationButton 
+        {
+            onAdd(map)
+            {
+                this._map = map;
+                this._container = document.createElement('input');
+                this._container.id = 'navigation';
+                this._container.className = 'mapboxgl-ctrl';
+                this._container.type = 'button';
+                this._container.value = 'Navigation';
+                this._container.style.width = '300px';
+                this._container.style.height = '30px';
+
+                this.isNavigationEnable = false;
+                this._container.addEventListener('click', function()
+                {
+                    if(!this.isNavigationEnable)
+                    {
+                        map.addControl(directions, 'top-left');
+                        document.getElementById('navigation').value = 'Remove';
+                        this.isNavigationEnable = true;
+                    }
+                    else
+                    {
+                        map.removeControl(directions);
+                        document.getElementById('navigation').value = 'Remove';
+                        this.isNavigationEnable = false;
+                    }
+                });
+                return this._container;
+            }
+
+            onRemove()
+            {
+                this._container.parentNode.removeChild(this._container);
+                this._map = undefined;
+            }
         }
+
+        var navigation = new NavigationButton();
+        map.addControl(navigation, 'top-left');
     </script>
-    <button id="navigation" onclick="Navigate()">Nawigacja</button>
-    <button id="remove" onclick="Remove()">Remove</button>
 </body>
 </html>
 
