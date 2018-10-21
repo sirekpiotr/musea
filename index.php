@@ -21,17 +21,15 @@
         <div id="menu">
             <ol>
                 <li><a href="#">M I A S T A</a>
-                <ul>
-                    <form action="set.php" method="POST">                        
-                    <li><a href="#" name="miasto" value="Warszawa">Warszawa</a></li>
-                    <li><a href="#" name="miasto" value="Krakow">Kraków</a></li>
-                    <li><a href="#" name="miasto">Bydgoszcz</a></li>
-                    <li><a href="#" name="miasto">Wrocław</a></li>
-                    <li><a href="#" name="miasto">Szczecin</a></li>
-                    <li><a href="#" name="miasto">Gdańsk</a></li>
-                    <li><a href="#" name="miasto">Łódź</a></li>
-                    <li><a href="#" name="miasto">Lublin</a></li>
-                    </form>
+                <ul>            
+                    <li><a href="index.php?miasto=1">Warszawa</a></li>
+                    <li><a href="index.php?miasto=2" name="miasto" value="Krakow">Kraków</a></li>
+                    <li><a href="index.php?miasto=3" name="miasto" value="Bydgoszcz">Bydgoszcz</a></li>
+                    <li><a href="index.php?miasto=4" name="miasto" value="Wroclaw">Wrocław</a></li>
+                    <li><a href="index.php?miasto=5" name="miasto" value="Szczecin">Szczecin</a></li>
+                    <li><a href="index.php?miasto=6" name="miasto" value="Gdansk">Gdańsk</a></li>
+                    <li><a href="index.php?miasto=7" name="miasto" value="Lodz">Łódź</a></li>
+                    <li><a href="index.php?miasto=8" name="miasto" value="Lublin">Lublin</a></li> 
                 </ul>
             </li>
             </ol>
@@ -47,12 +45,78 @@
     </div>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1Ijoic2lyZWtwaW90ciIsImEiOiJjajk4cXNiM24wZDg0MnFsZ3B1cHczc3RvIn0.15mNfH6Yh7tbIBUjgXEtoQ';
-
-        var bounds = [ //Warszawa
-            [20.752759,52.062795], // Southwest coordinates
-            [21.315152,52.425376]  // Northeast coordinates
-        ];
-
+        <?php
+            if(isset($_GET["miasto"]))
+            {
+                switch($_GET["miasto"])
+                {
+                    case 1:
+                        echo
+                        'var bounds = [
+                            [20.752759,52.062795],
+                            [21.315152,52.425376]
+                        ];';
+                        break;
+                    case 2:
+                        echo
+                        'var bounds = [
+                            [19.747109,49.971015],
+                            [20.209706,50.140303]
+                        ];';
+                        break;
+                    case 3:
+                        echo
+                        'var bounds = [
+                            [17.839628,53.045677],
+                            [18.243199,53.212946]
+                        ];';
+                        break;
+                    case 4:
+                        echo
+                        'var bounds = [
+                            [16.774515,50.952209],
+                            [17.337318,51.235106]
+                        ];';
+                        break;
+                    case 5:
+                        echo
+                        'var bounds = [
+                            [14.311648,53.309878],
+                            [14.815426,53.516149]
+                        ];';
+                        break;
+                    case 6:
+                        echo
+                        'var bounds = [
+                            [18.358781,54.233456],
+                            [18.954529,54.454398]
+                        ];';
+                        break;
+                    case 7:
+                        echo
+                        'var bounds = [
+                            [19.152906,51.579470],
+                            [19.836506,51.938180]
+                        ];';
+                        break;
+                    case 8:
+                        echo
+                        'var bounds = [
+                            [22.311091,51.140936],
+                            [22.824477,51.358410]
+                        ];';
+                        break;
+                }
+            }
+            else
+            {
+                echo
+                'var bounds = [
+                    [20.752759,52.062795], // Southwest coordinates
+                    [21.315152,52.425376]  // Northeast coordinates
+                ];';
+            }
+        ?>
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/sirekpiotr/cjncvcjwz26fk2snz4anngg10',
@@ -60,7 +124,6 @@
             zoom: 15.3,
             maxBounds: bounds
         });
-
         map.addControl(new mapboxgl.GeolocateControl({
             positionOptions: {
                 enableHighAccuracy: true
@@ -69,10 +132,43 @@
         }));
         //if(!isset($_SESSION['miasto']))header('location: stronaglowna.html');
         var features = [<?php
-        $c = mysqli_connect('localhost','root','');
-        mysqli_select_db($c,'muzea');
+        $c = mysqli_connect('localhost','id7563844_root','zaq1@WSX');
+        mysqli_select_db($c,'id7563844_musea');
         mysqli_set_charset($c, 'utf8');
-        $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Warszawa';";
+        if(isset($_GET["miasto"]))
+        {
+            switch($_GET["miasto"])
+            {
+                case 1:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Warszawa';";
+                    break;
+                case 2:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Krakow';";
+                    break;
+                case 3:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Bydgoszcz';";
+                    break;
+                case 4:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Wroclaw';";
+                    break;
+                case 5:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Szczecin';";
+                    break;
+                case 6:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Gdansk';";
+                    break;
+                case 7:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Lodz';";
+                    break;
+                case 8:
+                    $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Lublin';";
+                    break;
+            }
+        }
+        else
+        {
+            $q = "SELECT Nazwa_Muzeum,x,y FROM `mytable` WHERE Miejscowosc='Warszawa';";
+        }  
         $sql = mysqli_query($c,$q);
         while($dane = mysqli_fetch_assoc($sql))
         {
@@ -93,28 +189,20 @@
         json.type = "symbol";
         json.source = source;
         json.layout = layout;
-
-
         map.on("load", function () {
         
-            //map.setLayoutProperty('country-label-lg', 'text-field', ['get', 'name_' + 'pl']);
         map.loadImage("./ikona-muzeum.png", function(error, image) { //https://i.imgur.com/MK4NUzI.png
             if (error) throw error;
             map.addImage("custom-marker", image);
             map.addLayer(json);
             });
-
             map.on('click', 'markers', function (e) {
                 var coordinates = e.features[0].geometry.coordinates.slice();
                 var description = e.features[0].properties.description;
-
-                // Ensure that if the map is zoomed out such that multiple
-                // copies of the feature are visible, the popup appears
-                // over the copy being pointed to.
+               
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
-
                 new mapboxgl.Popup()
                     .setLngLat(coordinates)
                     .setHTML(description)
@@ -123,19 +211,15 @@
             map.on('mouseenter', 'markers', function () {
                 map.getCanvas().style.cursor = 'pointer';
             });
-
             map.on('mouseleave', 'markers', function () {
                 map.getCanvas().style.cursor = '';
             });
-
         });
-
         var directions = new MapboxDirections({
             accessToken: mapboxgl.accessToken,
             unit: 'metric',
             profile: 'mapbox/walking' // Chodzenie to dobra sprawa :)
         });
-
         class NavigationButton 
         {
             onAdd(map)
@@ -148,7 +232,6 @@
                 this._container.value = 'Navigation';
                 this._container.style.width = '300px';
                 this._container.style.height = '30px';
-
                 this.isNavigationEnable = false;
                 this._container.addEventListener('click', function()
                 {
@@ -167,22 +250,14 @@
                 });
                 return this._container;
             }
-
             onRemove()
             {
                 this._container.parentNode.removeChild(this._container);
                 this._map = undefined;
             }
         }
-
         var navigation = new NavigationButton();
         map.addControl(navigation, 'top-left');
     </script>
 </body>
 </html>
-
-
-
-<!--
-    https://www.latlong.net/
--->
